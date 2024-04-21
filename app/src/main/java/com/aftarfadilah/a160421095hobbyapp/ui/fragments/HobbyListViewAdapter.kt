@@ -30,10 +30,10 @@ class HobbyListViewAdapter(
         holder.binding.txtJudul.text = hobbyList[position].judul
         holder.binding.txtNamaPenulis.text = "${hobbyList[position].username_penulis}"
 
-//        holder.binding.btnDetail.setOnClickListener {
-//            val action = StudentListFragmentDirections.actionStudentDetail(hobbyList[position].id ?: "")
-//            Navigation.findNavController(it).navigate(action)
-//        }
+        holder.binding.btnDetail.setOnClickListener {
+            val action = HomeFragmentDirections.toDetail((hobbyList[position].id ?: "").toString())
+            Navigation.findNavController(it).navigate(action)
+        }
 //        var imageView = holder.itemView.findViewById<ImageView>(R.id.imageView)
 //        var progressBar = holder.itemView.findViewById<ProgressBar>(R.id.progressBar)
 //        imageView.loadImage(hobbyList[position].photoUrl, progressBar)
