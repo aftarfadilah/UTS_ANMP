@@ -16,7 +16,7 @@ import com.google.gson.reflect.TypeToken
 class DetailViewModel(application: Application): AndroidViewModel(application) {
     val loadingLD = MutableLiveData<Boolean>()
     val studentLoadErrorLD = MutableLiveData<Boolean>()
-    val studentLD = MutableLiveData<Hobby>()
+    val hobbyLd = MutableLiveData<Hobby>()
     private var queue: RequestQueue? = null
 
 
@@ -37,7 +37,7 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
                 { response ->
                     val sType = object : TypeToken<Hobby>() {}.type
                     val result = Gson().fromJson<Hobby>(response, sType)
-                    studentLD.value = result as Hobby?
+                    hobbyLd.value = result as Hobby?
                     loadingLD.value = false
                     Log.d("HobbyDetail", "Response: $response") // Log the response from the server
                     Log.d("HobbyDetail", "Parsed Result: $result") // Log the parsed result

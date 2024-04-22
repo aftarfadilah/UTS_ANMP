@@ -1,15 +1,16 @@
 package com.aftarfadilah.a160421095hobbyapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.aftarfadilah.a160421095hobbyapp.databinding.FragmentHobbyDetailBinding
 import com.aftarfadilah.a160421095hobbyapp.viewmodel.DetailViewModel
+import com.squareup.picasso.Picasso
 
 class HobbyDetailFragment : Fragment() {
     private lateinit var viewModel: DetailViewModel
@@ -60,16 +61,17 @@ class HobbyDetailFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.studentLD.observe(viewLifecycleOwner, Observer { hobby ->
+        viewModel.hobbyLd.observe(viewLifecycleOwner, Observer { hobby ->
             // Update UI with student details
             binding.txtJudul.setText(hobby.judul.toString() ?: "")
             binding.txtNamaPenulis.setText(hobby.username_penulis ?: "")
             binding.txtJudulArtikel.setText(hobby.artikel[currentArticleIndex].judul_artikel ?: "")
             binding.txtKonten.setText(hobby.artikel[currentArticleIndex].konten ?: "")
-            // You can ignore the button update as per the hint
-//            var imageView = binding.imageView3
-//            var progressBar = binding.progressBar
-//            imageView.loadImage(hobby.photoUrl, progressBar)
+            val picasso = Picasso.Builder(binding.root.context)
+            picasso.listener{picasso, uri, exception -> exception.printStackTrace()}
+            picasso.build().load(hobby.url_gambar).into(binding.imageView)
+
+            binding.progressBar.visibility = View.GONE
         })
 
 //        viewModel.studentLD.observe(viewLifecycleOwner, Observer {

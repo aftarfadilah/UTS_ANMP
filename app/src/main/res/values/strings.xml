@@ -7,4 +7,5 @@
     <string name="nama_belakang">Nama Belakang</string>
     <string name="save">Save</string>
     <string name="log_out">Log Out</string>
+    <string name="password">Password</string>
 </resources>

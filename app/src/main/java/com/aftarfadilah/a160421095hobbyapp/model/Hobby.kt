@@ -5,6 +5,7 @@ class Hobby(
     val judul: String?,
     val id_penulis: Int?,
     val penulis: User?,
+    val url_gambar: String?,
     val username_penulis: String,
     val artikel: Array<HobbyArticleList>
 )

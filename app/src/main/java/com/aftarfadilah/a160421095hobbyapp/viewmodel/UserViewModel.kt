@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.aftarfadilah.a160421095hobbyapp.model.Hobby
 import com.aftarfadilah.a160421095hobbyapp.model.User
+import com.aftarfadilah.a160421095hobbyapp.ui.activities.MainActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
@@ -89,6 +90,49 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
                     params["username"] = username
                     params["nama_depan"] = namaDepan
                     params["nama_belakang"] = namaBelakang
+                    return params
+                }
+            }
+
+            stringRequest.tag = TAG
+            queue?.add(stringRequest)
+        }
+    }
+
+    fun login(username: String, password: String) {
+        loadingLD.value = true
+        studentLoadErrorLD.value = false
+
+        queue?.let { queue ->
+            val url = "http://10.0.2.2/api/hobbyApp/users/login/"
+
+            val stringRequest = object : StringRequest(
+                Method.POST, url,
+                { response ->
+                    try {
+                        val sType = object : TypeToken<User>() {}.type
+                        val result = Gson().fromJson<User>(response, sType)
+                        userLD.postValue(result)
+                        Log.d("UserVolley", "Response: $response")
+                        Log.d("UserVolley", "Parsed Result: $result")
+                    } catch (e: Exception) {
+                        Log.e("UserVolley", "Parsing error: $e")
+                        studentLoadErrorLD.postValue(true)
+                    }
+                    loadingLD.postValue(false)
+
+//                    Toast.makeText(getApplication(), "Success  Profile", Toast.LENGTH_SHORT).show()
+                },
+                { error ->
+                    Log.e("UserVolley", "Error: ${error.message}")
+                    studentLoadErrorLD.postValue(true)
+                    loadingLD.postValue(false)
+//                    Toast.makeText(getApplication(), "Failed Saving", Toast.LENGTH_SHORT).show()
+                }) {
+                override fun getParams(): Map<String, String> {
+                    val params = HashMap<String, String>()
+                    params["username"] = username
+                    params["password"] = password
                     return params
                 }
             }
