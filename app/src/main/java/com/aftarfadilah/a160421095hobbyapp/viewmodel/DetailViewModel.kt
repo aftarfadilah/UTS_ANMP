@@ -1,7 +1,9 @@
 package com.aftarfadilah.a160421095hobbyapp.viewmodel
 
+import android.app.Application
 import android.content.ContentValues
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.aftarfadilah.a160421095hobbyapp.model.Hobby
 import com.android.volley.Request
@@ -11,16 +13,16 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class DetailViewModel {
+class DetailViewModel(application: Application): AndroidViewModel(application) {
     val loadingLD = MutableLiveData<Boolean>()
     val studentLoadErrorLD = MutableLiveData<Boolean>()
     val studentLD = MutableLiveData<Hobby>()
     private var queue: RequestQueue? = null
 
 
-//    init {
-//        queue = Volley.newRequestQueue(getApplication())
-//    }
+    init {
+        queue = Volley.newRequestQueue(getApplication())
+    }
 
 
 
@@ -37,11 +39,11 @@ class DetailViewModel {
                     val result = Gson().fromJson<Hobby>(response, sType)
                     studentLD.value = result as Hobby?
                     loadingLD.value = false
-                    Log.d("showvoley", "Response: $response") // Log the response from the server
-                    Log.d("showvoley", "Parsed Result: $result") // Log the parsed result
+                    Log.d("HobbyDetail", "Response: $response") // Log the response from the server
+                    Log.d("HobbyDetail", "Parsed Result: $result") // Log the parsed result
                 },
                 { error ->
-                    Log.d("showvoley", "Error: $error") // Log any error that occurred
+                    Log.d("HobbyDetail", "Error: $error") // Log any error that occurred
                     studentLoadErrorLD.value = true
                     loadingLD.value = false
                 })

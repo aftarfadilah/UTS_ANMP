@@ -8,12 +8,14 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.aftarfadilah.a160421095hobbyapp.R
 import com.aftarfadilah.a160421095hobbyapp.databinding.ActivityMainBinding
+import com.aftarfadilah.a160421095hobbyapp.model.User
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    var LoggedInUserId: Number = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

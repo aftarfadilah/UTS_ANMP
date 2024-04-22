@@ -6,15 +6,18 @@
         android:id="@+id/ItemHome"
         android:icon="@drawable/baseline_home_24"
         android:title="Home"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white" />
     <item
         android:id="@+id/ItemHistory"
         android:icon="@drawable/baseline_history_24"
         android:title="History"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:iconTint="@color/white" />
     <item
         android:id="@+id/ItemProfile"
         android:icon="@drawable/baseline_person_24"
         android:title="Profile"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:iconTint="@color/white" />
 </menu>

@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
+            android:layout_margin="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:text="NAMA PENULIS" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnDetail"
                         style="@style/Widget.AppCompat.Button"
                         android:paddingHorizontal="24dp"
@@ -79,7 +80,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

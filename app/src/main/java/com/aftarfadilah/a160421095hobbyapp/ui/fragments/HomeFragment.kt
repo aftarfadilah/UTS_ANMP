@@ -51,7 +51,6 @@ class HomeFragment : Fragment() {
         binding.recView.layoutManager = LinearLayoutManager(context)
         binding.recView.adapter = hobbyListAdapter
         observeViewModel()
-
     }
     fun observeViewModel() {
         viewModel.studentsLD.observe(viewLifecycleOwner, Observer {

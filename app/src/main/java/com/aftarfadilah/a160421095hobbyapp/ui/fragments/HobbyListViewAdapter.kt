@@ -31,7 +31,7 @@ class HobbyListViewAdapter(
         holder.binding.txtNamaPenulis.text = "${hobbyList[position].username_penulis}"
 
         holder.binding.btnDetail.setOnClickListener {
-            val action = HomeFragmentDirections.toDetail((hobbyList[position].id ?: "").toString())
+            val action = HomeFragmentDirections.toDetail(hobbyList[position].id.toString() ?: "")
             Navigation.findNavController(it).navigate(action)
         }
 //        var imageView = holder.itemView.findViewById<ImageView>(R.id.imageView)

@@ -89,6 +89,7 @@
                     android:layout_gravity="end">
 
                     <Button
+                        android:id="@+id/btnPrev"
                         style="@style/Widget.AppCompat.Button"
                         android:paddingHorizontal="24dp"
                         android:layout_width="wrap_content"
@@ -97,6 +98,7 @@
                         android:text="Previous" />
 
                     <Button
+                        android:id="@+id/btnNext"
                         style="@style/Widget.AppCompat.Button"
                         android:paddingHorizontal="24dp"
                         android:layout_width="wrap_content"
