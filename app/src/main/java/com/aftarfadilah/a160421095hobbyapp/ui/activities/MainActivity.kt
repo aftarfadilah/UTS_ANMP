@@ -29,4 +29,5 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navView, navController)
         binding.bottomNav.setupWithNavController(navController)
     }
+
 }
